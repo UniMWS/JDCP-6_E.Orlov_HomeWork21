@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,5 +23,12 @@ public class Main {
         Collections.sort(people, new PersonsSurnameAgeComparator(4));// Задача 2
         // форматированный вывод списка
         System.out.printf("Список после сортировки:%s.\n", people.toString().replaceAll("\\[|\\]", ""));
+
+//      ДЗ-21, Задача 2 (обязательная):
+        System.out.println("\nДЗ-21: Лямбда-выражения и функциональные интерфейсы" +
+                "\nЗадача 2 - использовать Predicate<Person> для удаления из списка по возрасту.");
+        Predicate<Person> ifAge = age -> age.getAge() < 18;
+        people.removeIf(ifAge);
+        System.out.printf("\nСписок после удаления:%s.\n", people.toString().replaceAll("\\[|\\]", ""));
     }
 }
